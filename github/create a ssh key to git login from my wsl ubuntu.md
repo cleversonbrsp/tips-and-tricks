@@ -1,4 +1,3 @@
-```markdown
 # How to Create an SSH Key for Git Login from WSL Ubuntu
 
 To create an SSH key for Git login from your WSL Ubuntu environment, you can follow these steps:
@@ -93,5 +92,4 @@ Make sure to set the appropriate permissions:
 
 ```bash
 chmod 700 ~/.ssh
-```
 ```
