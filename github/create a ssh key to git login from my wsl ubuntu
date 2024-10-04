@@ -1,3 +1,5 @@
+# How to Create an SSH Key for Git Login from WSL Ubuntu
+
 To create an SSH key for Git login from your WSL Ubuntu environment, you can follow these steps:
 
 1. **Generate a new SSH key**:
@@ -59,7 +61,9 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 Now, you can use SSH to authenticate with your Git provider for cloning, pushing, and pulling repositories.
 
 ---
+
 # Remember
+
 The default `.ssh` folder on WSL Ubuntu is located in your home directory:
 
 ```
