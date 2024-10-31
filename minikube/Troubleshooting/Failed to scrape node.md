@@ -1,4 +1,3 @@
-```markdown
 # Troubleshooting: "Failed to scrape node" Error in Minikube
 
 ## Issue
