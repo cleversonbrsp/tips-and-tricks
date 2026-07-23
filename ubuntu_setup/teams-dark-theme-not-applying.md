@@ -39,6 +39,26 @@ This keeps `followSystemTheme` working and fixes every Electron app relying on t
 
 ---
 
+### Known caveat: still opens light right after a fresh boot/login
+
+Even with `color-scheme` correctly set to `prefer-dark`, Teams can still open in light mode the first time it's launched after a reboot. This is a **startup race** between `teams-for-linux` and the `xdg-desktop-portal-gtk` service (the backend that actually answers the theme query):
+
+```bash
+# Compare start times:
+ps -o pid,lstart,cmd -C teams-for-linux
+ps -o pid,lstart,cmd -C xdg-desktop-portal-gtk
+```
+
+If Teams started *before* `xdg-desktop-portal-gtk` registered on the session bus, it asked for the theme too early, got no answer, and doesn't retry later in the session. The fix is simply to relaunch Teams once the portal is confirmed running:
+
+```bash
+pkill -f teams-for-linux
+```
+
+Then reopen the app — it will read the theme correctly this time. If Teams is ever configured to autostart at login, delay it by a few seconds to avoid hitting this race every time.
+
+---
+
 ### Solution 2: Disable "follow system" and set the theme manually
 
 Use this if Solution 1 doesn't stick, or if you'd rather control Teams' theme independently of the OS.
