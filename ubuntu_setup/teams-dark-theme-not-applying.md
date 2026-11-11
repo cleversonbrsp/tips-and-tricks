@@ -29,8 +29,9 @@ The only combination that has stayed dark reliably across reboots. Skips the fla
    ```
 2. Add:
    ```json
-   { "followSystemTheme": false }
+   { "appearance": { "followSystemTheme": false } }
    ```
+   > **Note:** older versions used the flat key `{ "followSystemTheme": false }`. It is deprecated and stops working in teams-for-linux **v2.32.0** (the app shows a "Configuration Warning" dialog on startup). Use `appearance.followSystemTheme` as above. *Settings > Show Updated Config…* writes a copy of your config with the new names without touching your own `config.json`.
 3. Restart Teams:
    ```bash
    pkill -f teams-for-linux
